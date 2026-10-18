@@ -1,0 +1,17 @@
+[package]
+name = "exuvia-rules"
+description = "Community rule database loader, matching and validation for Exuvia"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+exuvia-core = { path = "../exuvia-core" }
+serde.workspace = true
+thiserror.workspace = true
+toml.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

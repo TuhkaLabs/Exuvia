@@ -1,0 +1,141 @@
+# Exuvia community rules
+#
+# This file is shipped with the application and is safe to extend. Each rule
+# describes locations that belong to one application. Rules never bypass the
+# hard-coded safety policy: protected paths are rejected at load time.
+#
+# Schema: 1
+# License: CC0-1.0
+
+schema = 1
+version = "2026.10.1"
+
+[app."discord"]
+name = "Discord"
+publisher = "Discord Inc."
+aliases = ["Discord PTB", "Discord Canary"]
+platforms = ["windows"]
+
+[[app."discord".paths]]
+path = "%APPDATA%\\discord"
+kind = "user-data"
+confidence = "high"
+
+[[app."discord".paths]]
+path = "%LOCALAPPDATA%\\Discord"
+kind = "cache"
+confidence = "high"
+
+[[app."discord".registry]]
+key = "HKCU\\Software\\Discord"
+kind = "config"
+confidence = "high"
+
+[app."slack"]
+name = "Slack"
+publisher = "Slack Technologies, Inc."
+platforms = ["windows"]
+
+[[app."slack".paths]]
+path = "%APPDATA%\\Slack"
+kind = "user-data"
+confidence = "high"
+
+[[app."slack".paths]]
+path = "%LOCALAPPDATA%\\Slack"
+kind = "cache"
+confidence = "high"
+
+[[app."slack".registry]]
+key = "HKCU\\Software\\Slack"
+kind = "config"
+confidence = "high"
+
+[app."spotify"]
+name = "Spotify"
+publisher = "Spotify AB"
+platforms = ["windows"]
+
+[[app."spotify".paths]]
+path = "%APPDATA%\\Spotify"
+kind = "user-data"
+confidence = "high"
+
+[[app."spotify".paths]]
+path = "%LOCALAPPDATA%\\Spotify"
+kind = "cache"
+confidence = "high"
+
+[[app."spotify".registry]]
+key = "HKCU\\Software\\Spotify"
+kind = "config"
+confidence = "high"
+
+[app."vscode"]
+name = "Microsoft Visual Studio Code"
+publisher = "Microsoft Corporation"
+aliases = ["Visual Studio Code", "VS Code"]
+platforms = ["windows"]
+
+[[app."vscode".paths]]
+path = "%APPDATA%\\Code"
+kind = "user-data"
+confidence = "high"
+
+[[app."vscode".paths]]
+path = "%USERPROFILE%\\.vscode"
+kind = "user-data"
+confidence = "high"
+
+[[app."vscode".paths]]
+path = "%USERPROFILE%\\.vscode-insiders"
+kind = "user-data"
+confidence = "high"
+
+[app."7zip"]
+name = "7-Zip"
+publisher = "Igor Pavlov"
+aliases = ["7-Zip"]
+platforms = ["windows"]
+
+[[app."7zip".registry]]
+key = "HKCU\\Software\\7-Zip"
+kind = "config"
+confidence = "high"
+
+[[app."7zip".registry]]
+key = "HKLM\\SOFTWARE\\7-Zip"
+kind = "config"
+confidence = "high"
+
+[app."zoom"]
+name = "Zoom"
+publisher = "Zoom Video Communications, Inc."
+aliases = ["Zoom Workplace"]
+platforms = ["windows"]
+
+[[app."zoom".paths]]
+path = "%APPDATA%\\Zoom"
+kind = "user-data"
+confidence = "high"
+
+[[app."zoom".paths]]
+path = "%LOCALAPPDATA%\\Zoom"
+kind = "cache"
+confidence = "high"
+
+[app."obsstudio"]
+name = "OBS Studio"
+publisher = "OBS Project"
+aliases = ["OBS Studio", "OBS"]
+platforms = ["windows"]
+
+[[app."obsstudio".paths]]
+path = "%APPDATA%\\obs-studio"
+kind = "user-data"
+confidence = "high"
+
+[[app."obsstudio".paths]]
+path = "%LOCALAPPDATA%\\obs-studio"
+kind = "cache"
+confidence = "high"

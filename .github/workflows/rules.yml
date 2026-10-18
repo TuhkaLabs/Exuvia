@@ -1,0 +1,21 @@
+name: rules
+
+on:
+  pull_request:
+    paths:
+      - "rules/**"
+      - "crates/exuvia-rules/**"
+
+jobs:
+  validate:
+    name: validate rule database
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Validate bundled rules
+        run: cargo run -p exuvia-cli -- rules validate rules/bundled.toml
