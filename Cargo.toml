@@ -6,6 +6,7 @@ members = [
     "crates/exuvia-rules",
     "crates/exuvia-store",
     "crates/exuvia-cli",
+    "crates/exuvia-gui",
 ]
 
 [workspace.package]

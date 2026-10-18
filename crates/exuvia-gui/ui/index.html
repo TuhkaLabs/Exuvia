@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Exuvia</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <path
+              d="M24 4c8 4 14 10 14 20 0 9-6 16-14 20C16 40 10 33 10 24 10 14 16 8 24 4Z"
+              fill="none"
+              stroke="url(#grad)"
+              stroke-width="2.4"
+            />
+            <path
+              d="M24 11c4.5 2.5 8 6.5 8 13 0 6-3.5 10.5-8 13-4.5-2.5-8-7-8-13 0-6.5 3.5-10.5 8-13Z"
+              fill="rgba(45, 212, 191, 0.08)"
+              stroke="url(#grad)"
+              stroke-width="1.6"
+            />
+            <circle cx="24" cy="24" r="3.2" fill="#5eead4" />
+            <defs>
+              <linearGradient id="grad" x1="10" y1="4" x2="38" y2="44">
+                <stop offset="0%" stop-color="#5eead4" />
+                <stop offset="100%" stop-color="#38bdf8" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="brand-copy">
+            <h1>Exuvia</h1>
+            <p>Leave nothing behind</p>
+          </div>
+        </div>
+
+        <nav class="tabs" aria-label="Views">
+          <button class="tab active" data-view="apps">Applications</button>
+          <button class="tab" data-view="history">History</button>
+        </nav>
+
+        <div class="status" id="status" data-kind="idle">
+          <span class="status-dot"></span>
+          <span id="status-text">Ready</span>
+        </div>
+      </header>
+
+      <main>
+        <section id="apps-view" class="workspace">
+          <aside class="list-pane">
+            <div class="pane-head">
+              <div class="search-wrap">
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6" />
+                  <path d="m13 13 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg>
+                <input id="search" type="search" placeholder="Search applications" autocomplete="off" spellcheck="false" />
+              </div>
+              <span id="app-count" class="muted"></span>
+            </div>
+            <div id="app-list" class="app-list" role="listbox" aria-label="Installed applications"></div>
+          </aside>
+
+          <section id="detail" class="detail-pane">
+            <div class="empty-state">
+              <div class="empty-mark">◌</div>
+              <h2>Select an application</h2>
+              <p>Exuvia finds caches, preferences, registry keys, services and shortcuts an app leaves behind.</p>
+            </div>
+          </section>
+        </section>
+
+        <section id="history-view" class="history-view hidden">
+          <div class="history-head">
+            <div>
+              <h2>Uninstall history</h2>
+              <p class="muted">Every operation produces a manifest you can restore from.</p>
+            </div>
+            <button id="refresh-history" class="button ghost">Refresh</button>
+          </div>
+          <div id="history-list" class="history-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-card">
+        <h3 id="modal-title"></h3>
+        <p id="modal-body"></p>
+        <div class="modal-actions">
+          <button id="modal-cancel" class="button ghost">Cancel</button>
+          <button id="modal-confirm" class="button primary">Confirm</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden" role="status"></div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

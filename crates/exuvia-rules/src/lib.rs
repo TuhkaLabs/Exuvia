@@ -1,5 +1,3 @@
-
-
 //! Community rule database: schema, loader, matching and validation.
 //!
 //! Rules are TOML documents describing known per-application paths and registry

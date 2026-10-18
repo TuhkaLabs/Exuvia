@@ -1,0 +1,19 @@
+[package]
+name = "exuvia-gui"
+description = "Tauri desktop interface for Exuvia"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+exuvia-core = { path = "../exuvia-core" }
+exuvia-platform = { path = "../exuvia-platform" }
+exuvia-rules = { path = "../exuvia-rules" }
+exuvia-store = { path = "../exuvia-store" }
+serde.workspace = true
+tauri = { version = "2", features = [] }

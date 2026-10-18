@@ -221,6 +221,9 @@ impl Store {
     /// Execute every pending record and persist progress after each item.
     pub fn apply(&self, manifest: &mut Manifest, policy: &SafetyPolicy) -> Result<ApplyStats> {
         let mut stats = ApplyStats::default();
+        let mut policy = policy.clone();
+        policy.add_protected_root(self.root.clone());
+        let policy = &policy;
 
         for index in 0..manifest.records.len() {
             if manifest.records[index].status != RemovalStatus::Pending {
@@ -352,7 +355,9 @@ impl Store {
 
     pub fn restore(&self, id: &str) -> Result<RestoreReport> {
         let mut manifest = self.load_manifest(id)?;
-        let policy = SafetyPolicy::for_current_platform();
+        let mut policy = SafetyPolicy::for_current_platform();
+        policy.add_protected_root(self.root.clone());
+        let policy = &policy;
         let mut report = RestoreReport {
             manifest_id: manifest.id.clone(),
             ..RestoreReport::default()
@@ -362,7 +367,7 @@ impl Store {
             let record = manifest.records[index].clone();
             match record.status {
                 RemovalStatus::Quarantined => {
-                    match self.restore_record(&record, &policy) {
+                    match self.restore_record(&record, policy) {
                         Ok(()) => {
                             manifest.records[index].status = RemovalStatus::Restored;
                             manifest.records[index].error = None;
